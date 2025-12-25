@@ -1,0 +1,4 @@
+[submodule "Log"]
+	path = Log
+	url = git@github.com:SoleyRan/Log.git
+	ignore = dirty

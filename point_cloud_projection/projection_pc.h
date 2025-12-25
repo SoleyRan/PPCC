@@ -10,6 +10,8 @@
 #include <omp.h>
 #include <algorithm>
 
+#include <log.hpp>
+
 #include "member_check.hpp"
 
 namespace ppcc
@@ -32,7 +34,22 @@ struct LidarProjectionParams
     std::function<float(const Point_T&)> azimuth_calculator;
     std::function<float(const Point_T&)> elevation_calculator;
     int max_threads = omp_get_max_threads();
-    
+
+    void Print()
+    {
+        LOG_Info() << "projection_height: " << projection_height
+            << " projection_width: " << projection_width
+            << " real_lidar_height: " << real_lidar_height
+            << " real_lidar_width: " << real_lidar_width
+            << " horizontal_fov: " << horizontal_fov
+            << " vertical_fov: " << vertical_fov
+            << " min_elevation: " << min_elevation
+            << " max_elevation: " << max_elevation
+            << " max_distance: " << max_distance
+            << " min_distance: " << min_distance
+            << " max_threads: " << max_threads;
+    }
+
 };
 
 template <typename Point_T>
